@@ -1,5 +1,5 @@
 from .models import Message
-from .seiralizers import ChatMessageSerializer
+from .serializer import ChatMessageSerializer
 from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -35,9 +35,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
         # return await super().receive(text_date)
 
-    async def chat_message(self, event):
-        message = event['message']
-
-        await self.send(text_data=json.dumps({
-            'message': message
-        }))
+    
